@@ -1,8 +1,9 @@
 span = 4
 
 class SimHash:
+    span = 4
     # Constructor
-    def __init__(self, str, span):
+    def __init__(self, str, span=4):
         self.str = str
         self.span = span
         self.splitted_tab = []
