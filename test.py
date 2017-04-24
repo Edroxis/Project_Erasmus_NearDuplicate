@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from hashlib import md5
-from simhash import Simhash
-from jsonmanager import JsonManager
-import binascii
 import json
+from simhash import Simhash
 
 if __name__ == '__main__':
     # sim = Simhash(0, "hello world")
@@ -13,9 +9,13 @@ if __name__ == '__main__':
     # sim = JsonManager.open_json("test.json")
     # print(sim)
 
-    with open("data.json", "r", encoding="utf-8") as file:
-        obj = json.load(file)
-    print(type(obj))
-    for key in obj:
-        print(key + " " + obj[key])
+    # with open("data.json", "r", encoding="utf-8") as file:
+    #     obj = json.load(file)
+    # print(type(obj))
+    # for key in obj:
+    #     print(key + " " + obj[key])
+
+    sim = Simhash("*")
+    i = bin(sim.get_hash()).count("1") + bin(sim.get_hash()).count("0")
+    print(i)
 

@@ -44,20 +44,28 @@ class TestSimhash(unittest.TestCase):
         self.assertEqual(Simhash.calc_final_hash(vector), res)
 
 
-# class TestSimhashIndex(unittest.TestCase):
-#     def test_blank(self):
-#         self.assertEqual(True, True)
-#
-#     def test_add_sh(self):
-#         sim = Simhash(0, "I like trains")
-#         HashIndex.add_sh(sim)
-#         self.assertEqual(len(HashIndex.hash_table), 1)
-#         sim = Simhash(1, "Hey, do you wanna skateboard?")
-#         HashIndex.add_sh(sim)
-#         self.assertEqual(len(HashIndex.hash_table), 2)
-#         sim = Simhash(1, "Suddenly, pineapples.")
-#         HashIndex.add_sh(sim)
-#         self.assertEqual(len(HashIndex.hash_table), 2)
+class TestSimhashIndex(unittest.TestCase):
+    def test_blank(self):
+        self.assertEqual(True, True)
+
+    def test_add_sh(self):
+        sim = Simhash("I like trains")
+        HashIndex.add_sh(sim)
+        self.assertEqual(len(HashIndex.get_hash_table()), 1)
+        sim = Simhash("Hey, do you wanna skateboard?")
+        HashIndex.add_sh(sim)
+        self.assertEqual(len(HashIndex.get_hash_table()), 2)
+
+    def test_calc_diff(self):
+        hash1 = 12
+        hash2 = 6
+        self.assertEqual(HashIndex.calc_diff(hash1, hash2), 2)
+        hash1 = 12
+        hash2 = 3
+        self.assertEqual(HashIndex.calc_diff(hash1, hash2), 4)
+        hash1 = 12
+        hash2 = 12
+        self.assertEqual(HashIndex.calc_diff(hash1, hash2), 0)
 
 if __name__ == '__main__':
     unittest.main()
