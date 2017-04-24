@@ -3,15 +3,20 @@ import binascii
 
 
 class Simhash:
-    span = 4
+    SPAN = 4
 
     # Constructor
     def __init__(self, str, hash=0, span=4):
         self.str = str
-        Simhash.span = span
+        Simhash.SPAN = span
+
+        # Call of methods
         if hash != 0:
             self.hash = hash
-        # Call of methods
+        else:
+            splitted_tab = Simhash.splitter(str)
+            vec = Simhash.calc_vector(splitted_tab)
+            self.hash = Simhash.calc_final_hash(vec)
 
     # Getter and Setter
     def get_str(self):
@@ -34,13 +39,17 @@ class Simhash:
             raise TypeError("Invalide Type Simhash#splitter, param is not a string")
 
         # Take span
-        span = Simhash.span
+        span = Simhash.SPAN
         # Initialize splitted_tab
         splitted_tab = []
 
         # Enumerate different strings parts and stock them in a tuple (str, hash) in splitted_tab
         for n in range(0, len(str1)-span+1):
-            splitted_tab.append((str1[n:n+span], None))
+            current_str = str1[n:n+span]
+            splitted_tab.append((current_str, Simhash.hash_part(current_str)))
+        # If document is smaller than the span
+        if len(str1) < span:
+            splitted_tab.append((str1, Simhash.hash_part(str1)))
         return splitted_tab
 
     """
