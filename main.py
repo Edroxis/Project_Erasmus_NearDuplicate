@@ -24,8 +24,10 @@ if __name__ == '__main__':
 
     # print(HashIndex.search_sh(sim1, 20))
 
-    # hash_index = HashIndex()
-    # JsonManager.save_json_hash_index("test.json", hash_index)
+    # set_of_doc = JsonManager.load_json_raw_text_set("data.json")
 
     hash_index = JsonManager.open_json_hash_index("test.json")
     print(HashIndex.get_hash_table())
+
+    hash_index = HashIndex()
+    # JsonManager.save_json_hash_index("test.json", hash_index)

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from simhash import *
 from simhash_index import *
 import hashlib
 

@@ -124,7 +124,4 @@ class Simhash:
         return Simhash(dct['str'], dct['hash'])
 
     def __repr__(self):
-        return "Simhash\n\tstr:" + self.str + "\n\thash:" + str(self.hash) + "\n"
-
-    def __str__(self):
-        return "Simhash\n\tstr:" + self.str + "\n\thash:" + str(self.hash) + "\n"
+        return "Simhash\n\tstr: " + self.str + "\n\thash: " + str(self.hash) + "\n"
