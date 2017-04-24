@@ -4,19 +4,20 @@ from hashlib import md5
 from simhash import Simhash
 from jsonmanager import JsonManager
 import binascii
+import json
 
 if __name__ == '__main__':
-    m = md5()
-    m.update("hello world!".encode())
-    # print(m.digest())
-    n = md5()
-    n.update("hello world".encode())
-    print(type(n.hexdigest()))
-
-    # Transform hex string representation to int table
-    bin = binascii.unhexlify(m.hexdigest())
-    print(type(bin))
-    print(bin)
+    # m = md5()
+    # m.update("hello world!".encode())
+    # # print(m.digest())
+    # n = md5()
+    # n.update("hello world".encode())
+    # print(type(n.hexdigest()))
+    #
+    # # Transform hex string representation to int table
+    # bin = binascii.unhexlify(m.hexdigest())
+    # print(type(bin))
+    # print(bin)
 
     # bin2 = binascii.unhexlify(n.hexdigest())
     # print(bin2)
@@ -50,3 +51,10 @@ if __name__ == '__main__':
 
     # sim = JsonManager.open_json("test.json")
     # print(sim)
+
+    with open("data.json", "r", encoding="utf-8") as file:
+        obj = json.load(file)
+    print(type(obj))
+    for key in obj:
+        print(key + " " + obj[key])
+
