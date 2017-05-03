@@ -4,12 +4,12 @@ from simhash import Simhash
 
 if __name__ == '__main__':
     # sim = Simhash(0, "hello world")
-    # JsonManager.save_json("test.json", sim)
+    # JsonManager.save_json("output.json", sim)
 
-    # sim = JsonManager.open_json("test.json")
+    # sim = JsonManager.open_json("output.json")
     # print(sim)
 
-    # with open("data.json", "r", encoding="utf-8") as file:
+    # with open("rawData.json", "r", encoding="utf-8") as file:
     #     obj = json.load(file)
     # print(type(obj))
     # for key in obj:

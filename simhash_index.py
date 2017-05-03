@@ -37,9 +37,10 @@ class HashIndex:
 
     """
     This method search a SimHash into the static table hash_table
-    :param sim the SimHash object
+    :param hash the hash to compare
     :param diff the number of tolerated differences on hash
     :raise TypeError if arg is not of the proper type
+    :return table with similare Simhash objects
     """
     @staticmethod
     def search_sh(hash, diff):

@@ -9,7 +9,6 @@ class Simhash:
     def __init__(self, str, hash=0, span=4):
         self.str = str
         Simhash.SPAN = span
-
         # Call of methods
         if hash != 0:
             self.hash = hash
@@ -32,6 +31,7 @@ class Simhash:
     :param span length of each bit of text, default value = 4
     :return splitted_tab a table containing our bits of text
     """
+
     @staticmethod
     def splitter(str1):
         # Detects type error
@@ -44,8 +44,8 @@ class Simhash:
         splitted_tab = []
 
         # Enumerate different strings parts and stock them in a tuple (str, hash) in splitted_tab
-        for n in range(0, len(str1)-span+1):
-            current_str = str1[n:n+span]
+        for n in range(0, len(str1) - span + 1):
+            current_str = str1[n:n + span]
             splitted_tab.append((current_str, Simhash.hash_part(current_str)))
         # If document is smaller than the span
         if len(str1) < span:
@@ -57,6 +57,7 @@ class Simhash:
     :param str the string to hash
     :return hash the hash calculated
     """
+
     @staticmethod
     def hash_part(str1):
         # Detects type error
@@ -74,10 +75,11 @@ class Simhash:
     :param hash_tab the table will all the hash to agregate
     :return vec the vector containing counters
     """
+
     @staticmethod
     def calc_vector(hash_tab):
         # Initialize result variable with the size of used hash
-        res = [0] * (hash_tab[0][1].__len__()-1) * 8
+        res = [0] * (hash_tab[0][1].__len__() - 1) * 8
 
         # Go through all hash in table
         for tuple in hash_tab:
@@ -98,7 +100,7 @@ class Simhash:
                     # Otherwise, substract 1 to result vector
                     else:
                         res[byte_index * 8 + counter] -= 1
-                    bit_tester = bit_tester.__rshift__(1) # Shift test bit to the right
+                    bit_tester = bit_tester.__rshift__(1)  # Shift test bit to the right
                 byte_index += 1  # Change the byte tested
         return res
 
@@ -107,19 +109,21 @@ class Simhash:
     :param vec the agregation vector
     :return hash the final hash
     """
+
     @staticmethod
     def calc_final_hash(vec):
         res = 0
         # Go through vector
         for b in range(0, len(vec)):
             if vec[b] > 0:
-                res += (1 << len(vec)-1-b)
+                res += (1 << len(vec) - 1 - b)
         return res
 
     """
     This function unserialize the json structure
     :return the properly constructed Object
     """
+
     def unserialize(dct):
         return Simhash(dct['str'], dct['hash'])
 
